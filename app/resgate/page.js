@@ -62,7 +62,7 @@ export default function SolicitarResgate() {
     )
   }, [])
 
-  // ✅ Gravação robusta com mimeType dinâmico e start(100)
+
   const iniciarGravacao = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -88,7 +88,7 @@ export default function SolicitarResgate() {
         stream.getTracks().forEach((t) => t.stop())
       }
 
-      recorder.start(100) // ✅ coleta dados a cada 100ms
+      recorder.start(100) 
       setGravando(true)
       setTempoGravacao(0)
       timerRef.current = setInterval(() => setTempoGravacao((t) => t + 1), 1000)
@@ -141,7 +141,7 @@ export default function SolicitarResgate() {
     const temEndereco = form.endereco_descricao.trim().length > 0
     const temAudio = !!audioBlob
 
-    // ✅ Qualquer uma das três opções é suficiente
+  
     if (!temGPS && !temEndereco && !temAudio) {
       setErro('Informe pelo menos um: localização GPS, endereço ou áudio gravado.')
       return
@@ -156,13 +156,13 @@ export default function SolicitarResgate() {
         tem_audio: temAudio,
       })
 
-      // ✅ Tenta pegar ID em diferentes formatos de resposta
+      
       const resgateId =
         response?.data?.id ??
         response?.data?.data?.id ??
         `anonimo_${Date.now()}`
 
-      // ✅ Áudio sozinho também faz upload
+      
       if (temAudio) {
         const audioPublicUrl = await uploadAudio(audioBlob, resgateId)
         // Só atualiza o banco se tiver um ID numérico real
@@ -400,4 +400,4 @@ export default function SolicitarResgate() {
       </div>
     </div>
   )
-}
+}s

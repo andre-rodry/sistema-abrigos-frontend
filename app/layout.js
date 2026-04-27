@@ -2,8 +2,8 @@ import './globals.css'
 import Header from './components/Header'
 
 export const metadata = {
-  title: 'Sistema de Abrigos - Enchentes RS',
-  description: 'Plataforma de gestão de abrigos para enchentes no Rio Grande do Sul',
+  title: 'Sistema de Abrigos - Acolhe +',
+  description: 'Plataforma de gestão de abrigos para enchentes',
 }
 
 export default function RootLayout({ children }) {
